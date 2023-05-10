@@ -57,38 +57,36 @@ class Table(object):
         else:
             self.COLLIDE = False
         
-#t1 = Table(300, Y_START-50)
+t1 = Table(300, Y_START-50)
 t0 = Table(300, Y_START-50)
 
 print(t0)
 print(type(t0))
 
 def Collide_Objects(X_POSITION, Y_POSITION, sprung, on, Y_START_P, COLLIDE):
-    t = [t0.table_rect]#, t1.table_rect]
-    for table in range(1):
-        #print(t[table])
-        #print(table)
-        character_rect = STANDING_CHARACTER.get_rect(center=(X_POSITION, Y_POSITION))
-        if t[table].colliderect(character_rect) and sprung==True:
-            sprung=False
-            on=True
-            Y_START_P = Y_POSITION
-            print(X_POSITION)
-        elif sprung==False and on==True and not t[table].colliderect(character_rect):
-            sprung=True
-            on=False
-            Y_START_P = 400
-        elif t[table].colliderect(character_rect) and keys_pressed[pygame.K_d] and on==False:
-            COLLIDE = True
-            X_POSITION -=1
-            #print("Nein")
-        elif t[table].colliderect(character_rect) and keys_pressed[pygame.K_a] and on==False:
-            COLLIDE = True
-            X_POSITION +=1
-            #print("Nein")
-        else:
-            COLLIDE = False
-           #Y_POSITION = Y_START
+    t = [t0.table_rect, t1.table_rect]
+    character_rect = STANDING_CHARACTER.get_rect(center=(X_POSITION, Y_POSITION))
+    if (t[0].colliderect(character_rect) or t[1].colliderect(character_rect)) and sprung==True:
+        sprung=False
+        on=True
+        Y_START_P = Y_POSITION
+        print(X_POSITION)
+    elif sprung==False and on==True and not (t[0].colliderect(character_rect) or t[1].colliderect(character_rect)):
+        sprung=True
+        on=False
+        Y_START_P = 400
+    elif (t[0].colliderect(character_rect) or t[1].colliderect(character_rect)) and keys_pressed[pygame.K_d] and on==False:
+        COLLIDE = True
+        X_POSITION -=1
+        #print("Nein")
+    elif (t[0].colliderect(character_rect) or t[1].colliderect(character_rect)) and keys_pressed[pygame.K_a] and on==False:
+        COLLIDE = True
+        X_POSITION +=1
+       #print("Nein")
+    else:
+        COLLIDE = False
+        #Y_POSITION = Y_START
+    
     return COLLIDE, on, sprung, Y_START_P, character_rect, X_POSITION
 
 while True:
@@ -128,8 +126,8 @@ while True:
             di_npc = True
             print("Dialog...")
 
-#    t1.update(600, Y_START+50, character_rect)
-    t0.update(500, Y_START+50, character_rect)
+    t1.update(600, Y_START+50, character_rect)
+    t0.update(200, Y_START+50, character_rect)
 
     if sprung:
         Y_POSITION -= Y_VELOCITY
