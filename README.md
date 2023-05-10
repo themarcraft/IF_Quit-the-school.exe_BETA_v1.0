@@ -6,12 +6,12 @@ Demonstrating the gameplay of our newest game
 	SPACE - jump
 	LSHIFT - sprint
 	E - Interact, e.g. with the NPC
-## Infos:
+## Information:
 	Unfortunately, the background is not yet available
 	Hitboxes aren't quite correct yet
 	You can interact with the teacher so that the teacher talks to you
 	The key can be collected (which will be important later to complete a level)
-## Aufgabenteilung:
+## Tasks:
 	Programming + Ground: Marvin
 	Character + Assets: Bastian
 	Background: Johann
