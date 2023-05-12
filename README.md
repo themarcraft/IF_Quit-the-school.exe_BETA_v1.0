@@ -15,9 +15,18 @@ Unfortunately, the background is not yet available
 	You can interact with the teacher so that the teacher talks to you
 	The key can be collected (which will be important later to complete a level)
 ## Tasks:
-Programming + Ground: Marvin
+Programming + Assets: Marvin
 	Character + Assets: Bastian
 	Background: Johann
+| Assets | Name
+| -- | --|
+| Character | Bastian |
+| Libaryshelf | Marvin|
+| Ground | Bastian |
+|Table|Marvin|
+|Old_Table|Bastian
+|Key|Marvin
+
 ## Screenshots
 ![enter image description here](https://github.com/themarcraft/IF_Quit-the-school.exe_BETA_v1.0/blob/main/Screenshot%202023-05-12%20182920.png?raw=true)
 ![enter image description here](https://github.com/themarcraft/IF_Quit-the-school.exe_BETA_v1.0/blob/main/Screenshot%202023-05-12%20182837.png?raw=true)
