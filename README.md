@@ -22,7 +22,7 @@ Programming + Assets: Marvin
 | -- | --|
 | Character | Bastian |
 | Libaryshelf | Marvin|
-| Ground | Bastian |
+| Ground | Marvin |
 |Table|Marvin|
 |Old_Table|Bastian
 |Key|Marvin
