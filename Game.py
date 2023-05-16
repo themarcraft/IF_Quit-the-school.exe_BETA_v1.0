@@ -21,6 +21,7 @@ TIMER_A = 400
 TIMER_B = 10
 on= False
 exit0 = True
+col = False
 
 Y_GRAVITY = 0.6
 JUMP_HEIGHT = 10
@@ -34,7 +35,7 @@ RUNNINGL_CHARACTER = pygame.transform.scale(pygame.image.load("images/c1_runl.pn
 TEXT = pygame.transform.scale(pygame.image.load("images/Text1.png"), (300, 128))
 TABLE = pygame.transform.scale(pygame.image.load("images/tisch.png"), (66, 64))
 REGAL = pygame.transform.scale(pygame.image.load("images/regal.png"), (256,256))
-#collect = pygame.mixer.Sound("sounds/collect.mp3")
+collect = pygame.mixer.Sound("sounds/collect.mp3")
 #SLIDING_CHARACTER = pygame.transform.scale(pygame.image.load("images/c1_run.png"), (96, 128))
 KEY = pygame.transform.scale(pygame.image.load("images/key.png"), (48, 64))
 BG = pygame.transform.scale(pygame.image.load("images/boden.png"), (4000, 100))
@@ -77,27 +78,33 @@ print(t0)
 print(type(t0))
 
 def Collide_Objects(X_POSITION, Y_POSITION, sprung, on, Y_START_P, COLLIDE):
-    t = [t0.table_rect, t1.table_rect]
     character_rect = STANDING_CHARACTER.get_rect(center=(X_POSITION, Y_POSITION))
-    if (t[0].colliderect(character_rect) or t[1].colliderect(character_rect)) and sprung==True:
-        sprung=False
-        on=True
-        Y_START_P = Y_POSITION
-        print(X_POSITION)
-    elif sprung==False and on==True and not (t[0].colliderect(character_rect) or t[1].colliderect(character_rect)):
-        sprung=True
-        Y_POSITION = Y_START
-        on=False
-        Y_START_P = 400
-    elif sprung==True and on==True and not (t[0].colliderect(character_rect) or t[1].colliderect(character_rect)):
-        Y_POSITION = Y_START
-        on=False
-        Y_START_P = 400
-    elif (t[0].colliderect(character_rect) or t[1].colliderect(character_rect)) and keys_pressed[pygame.K_d] and on==False:
+    if col and keys_pressed[pygame.K_d] and on==False:
         COLLIDE = True
         X_POSITION -=1
         #print("Nein")
-    elif (t[0].colliderect(character_rect) or t[1].colliderect(character_rect)) and keys_pressed[pygame.K_a] and on==False:
+    elif col and keys_pressed[pygame.K_a] and on==False:
+        COLLIDE = True
+        X_POSITION +=1
+    elif col and sprung==True:
+        sprung=False
+        on=True
+        Y_START_P = Y_POSITION
+        #print(Y_POSITION)
+    elif sprung==False and on==True and not col:
+        sprung=True
+        Y_POSITION = Y_START_P
+        on=False
+        Y_START_P = Y_START
+    elif sprung==True and on==True and not col:
+        Y_POSITION = Y_START
+        on=False
+        Y_START_P = Y_START
+    elif col and keys_pressed[pygame.K_d] and on==False:
+        COLLIDE = True
+        X_POSITION -=1
+        #print("Nein")
+    elif col and keys_pressed[pygame.K_a] and on==False:
         COLLIDE = True
         X_POSITION +=1
        #print("Nein")
@@ -150,10 +157,16 @@ while exit0:
     if keys_pressed[pygame.K_ESCAPE]:
         print("Beende...")
         exit0 = False
-
+        
+    t0.update(540, Y_START+50, character_rect)
     t1.update(600, Y_START, character_rect)
     t2.update(600, Y_START+50, character_rect)
-    t0.update(540, Y_START+50, character_rect)
+        
+    if t0.table_rect.colliderect(character_rect) or t1.table_rect.colliderect(character_rect) or t2.table_rect.colliderect(character_rect):
+        col = True
+    else:
+        col = False
+
 
     if sprung:
         Y_POSITION -= Y_VELOCITY
@@ -187,7 +200,7 @@ while exit0:
         if item_rect.colliderect(character_rect):
             i1 = False
             print("JA")
-            #collect.play() 
+            collect.play() 
  
     if npc_rect.colliderect(character_rect):
         col_npc = True
