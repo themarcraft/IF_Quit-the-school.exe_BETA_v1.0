@@ -26,6 +26,7 @@ Programming + Assets: Marvin
 |Table|Marvin|
 |Old_Table|Bastian
 |Key|Marvin
+|Background|Johann | Nicht Vorhanden
 
 ## Screenshots
 ![enter image description here](https://github.com/themarcraft/IF_Quit-the-school.exe_BETA_v1.0/blob/main/Screenshot%202023-05-12%20182920.png?raw=true)
