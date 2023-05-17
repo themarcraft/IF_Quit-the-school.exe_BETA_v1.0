@@ -18,8 +18,8 @@ Unfortunately, the background is not yet available
 Programming + Assets: Marvin
 	Character + Assets: Bastian
 	Background: Johann
-| Assets | Name
-| -- | --|
+| Assets | Name | Kommentar
+| -- | --| --
 | Character | Bastian |
 | Libaryshelf | Marvin|
 | Ground | Marvin |
